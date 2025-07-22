@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Science Papers - 2021</title>
+  <link rel="stylesheet" href="style-dashboard.css" />
+  <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .subject-card {
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      width: 200px;
+    }
+
+    .subject-card:hover {
+      background-color: #e6f0ff;
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📙 Science - 2021 Question Papers</h1>
+    <nav>
+      <a href="science.html">&larr; Back to Science</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="intro">
+    <h2>Select a Subject</h2>
+    <div class="card-container">
+      <div class="subject-card" onclick="window.open('papers/science/2021/english.pdf', '_blank')">📘 English</div>
+      <div class="subject-card" onclick="window.open('papers/science/2021/physics.pdf', '_blank')">📙 Physics</div>
+      <div class="subject-card" onclick="window.open('papers/science/2021/chemistry.pdf', '_blank')">📗 Chemistry</div>
+      <div class="subject-card" onclick="window.open('papers/science/2021/biology.pdf', '_blank')">📕 Biology</div>
+      <div class="subject-card" onclick="window.open('papers/science/2021/maths.pdf', '_blank')">📒 Maths</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ExamEase. All rights reserved.</p>
+  </footer>
+</body>
+</html>

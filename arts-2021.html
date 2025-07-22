@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arts Papers - 2021</title>
+  <link rel="stylesheet" href="style-dashboard.css" />
+  <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .subject-card {
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      width: 200px;
+    }
+    .subject-card:hover {
+      background-color: #e6f0ff;
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎨 Arts - 2021 Question Papers</h1>
+    <nav>
+      <a href="arts.html">&larr; Back to Arts</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="intro">
+    <h2>Select a Subject</h2>
+    <div class="card-container">
+      <div class="subject-card" onclick="window.open('papers/arts/2021/english.pdf', '_blank')">📘 English</div>
+      <div class="subject-card" onclick="window.open('papers/arts/2021/history.pdf', '_blank')">📜 History</div>
+      <div class="subject-card" onclick="window.open('papers/arts/2021/geography.pdf', '_blank')">🗺️ Geography</div>
+      <div class="subject-card" onclick="window.open('papers/arts/2021/political-science.pdf', '_blank')">🏛️ Political Science</div>
+      <div class="subject-card" onclick="window.open('papers/arts/2021/economics.pdf', '_blank')">📈 Economics</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ExamEase. All rights reserved.</p>
+  </footer>
+</body>
+</html>

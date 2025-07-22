@@ -1,0 +1,187 @@
+/* ------------------------------------------
+   style-dashboard.css (for dashboard.html)
+------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #0052cc;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 960px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.intro {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.btn, button {
+  display: inline-block;
+  background: #0073e6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover, button:hover {
+  background: #005bb5;
+}
+
+label, select, input[type="file"] {
+  display: block;
+  margin: 1rem auto 0.5rem auto;
+  font-size: 1rem;
+}
+
+select, input[type="file"] {
+  padding: 0.5rem;
+  width: 90%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+ul#paperList {
+  list-style: none;
+  margin-top: 1.5rem;
+  padding-left: 0;
+}
+
+ul#paperList li {
+  background: #ffffff;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  max-width: 600px;
+}
+
+ul#paperList li a {
+  color: #0073e6;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+ul#paperList li a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #002b5c;
+  color: #ccc;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+
+  .intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    width: 90%;
+  }
+
+  input[type="file"], select {
+    width: 90%;
+  }
+  .subject-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.subject-cards .card {
+  background-color: #ffffff;
+  border: 2px solid #0073e6;
+  color: #0073e6;
+  border-radius: 12px;
+  padding: 1.5rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.subject-cards .card:hover {
+  background-color: #0073e6;
+  color: #fff;
+  transform: translateY(-4px) scale(1.02);
+}
+
+}

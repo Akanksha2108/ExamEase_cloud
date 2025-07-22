@@ -1,0 +1,60 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arts - Previous Year Papers</title>
+  <link rel="stylesheet" href="style-dashboard.css" />
+  <style>
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 180px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #fff0f0;
+    }
+    .card a {
+      text-decoration: none;
+      color: #b22222;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎨 Arts - Previous Year Papers</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="intro">
+    <h2>Select a Subject</h2>
+    <div class="card-container">
+      <div class="card"><a href="arts-2024.html">2024</a></div>
+      <div class="card"><a href="arts-2023.html">2023</a></div>
+      <div class="card"><a href="arts-2022.html">2022</a></div>
+      <div class="card"><a href="arts-2021.html">2021</a></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ExamEase. All rights reserved.</p>
+  </footer>
+</body>
+</html>

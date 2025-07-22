@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Exam Paper | ExamEase</title>
+  <link rel="stylesheet" href="style-upload.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e6f0ff;
+    }
+
+    /* Header Styling */
+    header {
+      background-color: #002b5c;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Login Popup Styling */
+    #loginPopup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .user-box {
+      margin-bottom: 15px;
+    }
+
+    .user-box label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .user-box input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .show-password {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .login-box button:hover {
+      background-color: #0056b3;
+    }
+
+    #uploadForm {
+      display: none;
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #uploadForm label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #uploadForm input,
+    #uploadForm select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    #uploadForm button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0 20px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔒 Admin Login Popup -->
+  <div id="loginPopup">
+    <div class="login-box">
+      <h2>ExamEase Admin Login</h2>
+      <form id="admin-login-form">
+        <div class="user-box">
+          <label for="popupUsername">Username</label>
+          <input type="text" id="popupUsername" required />
+        </div>
+        <div class="user-box">
+          <label for="popupPassword">Password</label>
+          <input type="password" id="popupPassword" required />
+        </div>
+        <div class="show-password">
+          <input type="checkbox" id="showPassword" />
+          <label for="showPassword">Show Password</label>
+        </div>
+        <button type="submit">Login</button>
+        <p id="loginError" style="color:red; font-weight:bold; margin-top:10px;"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ✅ Header & Navigation -->
+  <header>
+    <h1>📤 Upload Paper</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Browse Papers</a>
+    </nav>
+  </header>
+
+  <!-- ✅ Upload Form -->
+  <main class="upload-section">
+    <form id="uploadForm">
+      <h2>Upload Previous Year Exam Paper</h2>
+
+      <label for="stream">Stream:</label>
+      <select id="stream" required>
+        <option value="">--Select Stream--</option>
+        <option value="science">Science</option>
+        <option value="commerce">Commerce</option>
+        <option value="arts">Arts</option>
+      </select>
+
+      <label for="year">Year:</label>
+      <select id="year" required>
+        <option value="">--Select Year--</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+      </select>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" placeholder="e.g., Mathematics" required />
+
+      <label for="file">Upload PDF File:</label>
+      <input type="file" id="file" accept="application/pdf" required />
+
+      <button type="submit">Upload</button>
+
+      <p id="uploadStatus" style="margin-top: 15px; font-weight: bold;"></p>
+    </form>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer>
+    <p>&copy; 2025 ExamEase. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ JavaScript -->
+  <script>
+    // Show/hide password toggle
+    document.getElementById('showPassword').addEventListener('change', function () {
+      const pwdInput = document.getElementById('popupPassword');
+      pwdInput.type = this.checked ? 'text' : 'password';
+    });
+
+    // Admin Login Handler
+    document.getElementById('admin-login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('popupUsername').value.trim();
+      const password = document.getElementById('popupPassword').value.trim();
+      const error = document.getElementById('loginError');
+
+      if (username === "MagicBus" && password === "ExamEase") {
+        document.getElementById("loginPopup").style.display = "none";
+        document.getElementById("uploadForm").style.display = "block";
+      } else {
+        error.textContent = "❌ Invalid credentials.";
+      }
+    });
+
+    // Upload to S3 Handler
+    document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const stream = document.getElementById('stream').value.toLowerCase();
+      const year = document.getElementById('year').value;
+      const subject = document.getElementById('subject').value.toLowerCase().replace(/\s+/g, '_');
+      const file = document.getElementById('file').files[0];
+      const status = document.getElementById('uploadStatus');
+
+      status.textContent = '';
+      status.style.color = 'red';
+
+      if (!stream || !year || !subject || !file) {
+        status.textContent = "❌ Please fill in all fields.";
+        return;
+      }
+
+      try {
+        const filePath = `${stream}/${year}/${subject}.pdf`;
+        const lambdaURL = 'https://2ipxj0w1xe.execute-api.us-east-1.amazonaws.com/prem1/confirm';
+
+        const presignRes = await fetch(lambdaURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: filePath, contentType: file.type })
+        });
+
+        if (!presignRes.ok) {
+          status.textContent = "❌ Error generating upload link.";
+          return;
+        }
+
+        const { uploadUrl } = await presignRes.json();
+
+        const upload = await fetch(uploadUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': file.type },
+          body: file
+        });
+
+        if (upload.ok) {
+          status.style.color = 'green';
+          status.textContent = `✅ "${file.name}" uploaded successfully!`;
+        } else {
+          status.textContent = "❌ Upload failed.";
+        }
+
+      } catch (err) {
+        console.error("Upload error:", err);
+        status.textContent = "❌ Unexpected error.";
+      }
+    });
+  </script>
+</body>
+</html>
